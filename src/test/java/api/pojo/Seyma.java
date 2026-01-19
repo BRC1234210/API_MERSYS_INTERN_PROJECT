@@ -3,7 +3,7 @@ package api.pojo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Exams {
+public class Seyma {
     private String id;
     private String school;
     private String name;
@@ -11,9 +11,9 @@ public class Exams {
     private GradeLevel gradeLevel;
     private String type;
 
-    public Exams() {
+    public Seyma() {
     }
-    public Exams(String school, String name, String academicPeriod, GradeLevel gradeLevel, String type) {
+    public Seyma(String school, String name, String academicPeriod, GradeLevel gradeLevel, String type) {
         this.school = school;
         this.name = name;
         this.academicPeriod = academicPeriod;
