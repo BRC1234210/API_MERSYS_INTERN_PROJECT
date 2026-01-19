@@ -10,7 +10,7 @@ public class BaseTest {
 
     @BeforeClass
     public void setup(){
-        RestAssured.baseURI = "https://demo-hn2f.onrender.com";
+        RestAssured.baseURI = "https://campus.techno.study/";
 
         request = RestAssured
                 .given()
