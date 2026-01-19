@@ -13,6 +13,7 @@ public class BaseTest {
     public void setup(){
         RestAssured.baseURI = "https://campus.techno.study/";
 
+
         request = RestAssured
                 .given()
                 .contentType("application/json")
