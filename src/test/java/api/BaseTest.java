@@ -12,6 +12,7 @@ public class BaseTest {
     public void setup(){
         RestAssured.baseURI = "https://demo-hn2f.onrender.com";
 
+
         request = RestAssured
                 .given()
                 .contentType("application/json")
