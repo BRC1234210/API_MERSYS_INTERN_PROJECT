@@ -8,6 +8,7 @@ public class BaseTest {
 
     protected RequestSpecification request;
 
+
     @BeforeClass
     public void setup(){
         RestAssured.baseURI = "https://campus.techno.study/";
