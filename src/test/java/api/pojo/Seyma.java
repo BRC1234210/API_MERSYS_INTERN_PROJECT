@@ -13,6 +13,7 @@ public class Seyma {
 
     public Seyma() {
     }
+
     public Seyma(String school, String name, String academicPeriod, GradeLevel gradeLevel, String type) {
         this.school = school;
         this.name = name;
@@ -20,6 +21,7 @@ public class Seyma {
         this.gradeLevel = gradeLevel;
         this.type = type;
     }
+
     public String getId() {
         return id;
     }
@@ -67,6 +69,7 @@ public class Seyma {
     public void setType(String type) {
         this.type = type;
     }
+
     @Override
     public String toString() {
         return "Exams{" +
@@ -78,9 +81,9 @@ public class Seyma {
                 ", type='" + type + '\'' +
                 '}';
     }
+
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class GradeLevel {
-
         private String id;
 
         public GradeLevel() {
@@ -106,5 +109,208 @@ public class Seyma {
         }
     }
 
-}
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class EntityField {
+        private String id;
+        private String tenantId;
+        private String name;
+        private String code;
+        private String type;
+        private String hint;
+        private String defaultValue;
+        private Boolean constant;
+        private Boolean systemField;
+        private Integer maxLength;
+        private Integer rows;
+        private Boolean multiple;
+        private String offLabel;
+        private String onLabel;
+        private String revisionId;
+        private String changedDate;
+        private String changedBy;
+        private String createdDate;
+        private String createdBy;
 
+        public EntityField() {
+        }
+
+        public EntityField(String tenantId, String name, String code, String type,
+                           String hint, String defaultValue) {
+            this.tenantId = tenantId;
+            this.name = name;
+            this.code = code;
+            this.type = type;
+            this.hint = hint;
+            this.defaultValue = defaultValue;
+        }
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getTenantId() {
+            return tenantId;
+        }
+
+        public void setTenantId(String tenantId) {
+            this.tenantId = tenantId;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public void setCode(String code) {
+            this.code = code;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getHint() {
+            return hint;
+        }
+
+        public void setHint(String hint) {
+            this.hint = hint;
+        }
+
+        public String getDefaultValue() {
+            return defaultValue;
+        }
+
+        public void setDefaultValue(String defaultValue) {
+            this.defaultValue = defaultValue;
+        }
+
+        public Boolean getConstant() {
+            return constant;
+        }
+
+        public void setConstant(Boolean constant) {
+            this.constant = constant;
+        }
+
+        public Boolean getSystemField() {
+            return systemField;
+        }
+
+        public void setSystemField(Boolean systemField) {
+            this.systemField = systemField;
+        }
+
+        public Integer getMaxLength() {
+            return maxLength;
+        }
+
+        public void setMaxLength(Integer maxLength) {
+            this.maxLength = maxLength;
+        }
+
+        public Integer getRows() {
+            return rows;
+        }
+
+        public void setRows(Integer rows) {
+            this.rows = rows;
+        }
+
+        public Boolean getMultiple() {
+            return multiple;
+        }
+
+        public void setMultiple(Boolean multiple) {
+            this.multiple = multiple;
+        }
+
+        public String getOffLabel() {
+            return offLabel;
+        }
+
+        public void setOffLabel(String offLabel) {
+            this.offLabel = offLabel;
+        }
+
+        public String getOnLabel() {
+            return onLabel;
+        }
+
+        public void setOnLabel(String onLabel) {
+            this.onLabel = onLabel;
+        }
+
+        public String getRevisionId() {
+            return revisionId;
+        }
+
+        public void setRevisionId(String revisionId) {
+            this.revisionId = revisionId;
+        }
+
+        public String getChangedDate() {
+            return changedDate;
+        }
+
+        public void setChangedDate(String changedDate) {
+            this.changedDate = changedDate;
+        }
+
+        public String getChangedBy() {
+            return changedBy;
+        }
+
+        public void setChangedBy(String changedBy) {
+            this.changedBy = changedBy;
+        }
+
+        public String getCreatedDate() {
+            return createdDate;
+        }
+
+        public void setCreatedDate(String createdDate) {
+            this.createdDate = createdDate;
+        }
+
+        public String getCreatedBy() {
+            return createdBy;
+        }
+
+        public void setCreatedBy(String createdBy) {
+            this.createdBy = createdBy;
+        }
+
+        @Override
+        public String toString() {
+            return "EntityField{" +
+                    "id='" + id + '\'' +
+                    ", name='" + name + '\'' +
+                    ", code='" + code + '\'' +
+                    ", type='" + type + '\'' +
+                    ", hint='" + hint + '\'' +
+                    ", defaultValue='" + defaultValue + '\'' +
+                    ", constant=" + constant +
+                    ", systemField=" + systemField +
+                    ", maxLength=" + maxLength +
+                    ", rows=" + rows +
+                    ", multiple=" + multiple +
+                    ", createdDate='" + createdDate + '\'' +
+                    '}';
+        }
+    }
+}
