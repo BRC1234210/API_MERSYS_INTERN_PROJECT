@@ -82,7 +82,18 @@ public class US_008_AddStudentsByGroup extends BaseTest {
                         .extract().response();
     }
 
-    @Test(priority = 4, description = "Removing students from the group")
+
+
+    @Test(priority = 4,description = "")
+    public void getStudents(){
+        given()
+                .spec(request)
+                .when()
+                .get("/school-service/api/student-group/{id}",groupId)
+                .then()
+                .statusCode(200);
+    }
+    @Test(priority = 5, description = "Removing students from the group")
     public void deleteStudents() {
 
         String deleteBody = """
@@ -103,7 +114,7 @@ public class US_008_AddStudentsByGroup extends BaseTest {
                 .statusCode(200);
     }
 
-    @Test(priority = 5,description = "student group delete")
+    @Test(priority = 6,description = "student group delete")
     public void deleteGroup(){
 
         given()
