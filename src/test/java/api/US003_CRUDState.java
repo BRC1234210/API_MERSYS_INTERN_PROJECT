@@ -41,7 +41,7 @@ public class US003_CRUDState extends BaseTest {
         }
         System.out.println("USA ID= " + usaId);
 
-        Assert.assertNotNull(usaId, "Country not founded");
+        Assert.assertNotNull(usaId, "State ID is null");
     }
 
 
@@ -77,7 +77,7 @@ public class US003_CRUDState extends BaseTest {
 
     @Test(priority = 3, description = "Get State", dependsOnMethods = "createState")
     public void getState() {
-        Assert.assertNotNull(stateID, "stateID should not be null");
+        Assert.assertNotNull(stateID, "State ID is null");
         Response response =
                 given()
                         .spec(request)
@@ -89,14 +89,14 @@ public class US003_CRUDState extends BaseTest {
                         .body("name", equalTo("WestMemphis"))
                         .body("shortName", equalTo("WM"))
                         .extract().response();
-        String stateID = response.path("id"); // createState testinden
+        stateID = response.path("id");
 
 
     }
 
     @Test(priority = 4, description = "Update State", dependsOnMethods = "createState")
     public void updateState() {
-        Assert.assertNotNull(stateID, "stateID should not be null");
+        Assert.assertNotNull(stateID, "State ID is null");
         String updateBody = """
                 {
                 "id": "%s",
@@ -122,7 +122,7 @@ public class US003_CRUDState extends BaseTest {
 
     @Test(priority = 5, description = "Delete State", dependsOnMethods = "createState")
     public void deleteState() {
-        Assert.assertNotNull(stateID, "stateID should not be null");
+        Assert.assertNotNull(stateID, "State ID is null");
         given()
                 .spec(request)
                 .pathParam("stateId", stateID)
