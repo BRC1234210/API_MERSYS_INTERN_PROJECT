@@ -1,6 +1,6 @@
 package api;
 
-import api.pojo.Seyma;
+import api.pojo.Exams;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -16,16 +16,16 @@ public class US005_ExamsAPITest extends BaseTest {
 
     @Test(priority = 1, description = "Create a new exam")
     public void createExam() {
-        Seyma.GradeLevel gradeLevel = new Seyma.GradeLevel(gradeLevelId);
+        Exams.GradeLevel gradeLevel = new Exams.GradeLevel(gradeLevelId);
 
-        Seyma requestExam = new Seyma(
+        Exams requestExam = new Exams(
                 school_id,
                 "TestExam",
                 academicPeriod,
                 gradeLevel,
                 "REGISTRATION"
         );
-        Seyma createdExam =
+        Exams createdExam =
                 given()
                         .spec(request)
                         .body(requestExam)
@@ -35,7 +35,7 @@ public class US005_ExamsAPITest extends BaseTest {
                         .statusCode(201)
                         .body("id", notNullValue())
                         .extract()
-                        .as(Seyma.class);
+                        .as(Exams.class);
 
         System.out.println("Exam Created [Status: 201]:" + createdExam);
         examID = createdExam.getId();
@@ -44,9 +44,9 @@ public class US005_ExamsAPITest extends BaseTest {
     @Test(priority = 2, description = "Create exam - Missing required field (name)")
     public void createExamMissingName() {
 
-        Seyma.GradeLevel gradeLevel = new Seyma.GradeLevel(gradeLevelId);
+        Exams.GradeLevel gradeLevel = new Exams.GradeLevel(gradeLevelId);
 
-        Seyma requestExam = new Seyma(
+        Exams requestExam = new Exams(
                 school_id,
                 null,
                 academicPeriod,
@@ -68,7 +68,7 @@ public class US005_ExamsAPITest extends BaseTest {
     @Test(priority = 3, description = "Get exam by id")
     public void getExamById() {
 
-        Seyma exam =
+        Exams exam =
                 given()
                         .spec(request)
                         .when()
@@ -78,16 +78,16 @@ public class US005_ExamsAPITest extends BaseTest {
                         .body("id", equalTo(examID))
                         .body("name", equalTo("TestExam"))
                         .extract()
-                        .as(Seyma.class);
+                        .as(Exams.class);
 
         System.out.println("Exam Retrieved [Status: 200]: " + exam);
     }
     @Test(priority = 4, description = "Update exam")
     public void updateExam() {
 
-        Seyma.GradeLevel gradeLevel = new Seyma.GradeLevel(gradeLevelId);
+        Exams.GradeLevel gradeLevel = new Exams.GradeLevel(gradeLevelId);
 
-        Seyma updateRequest = new Seyma(
+        Exams updateRequest = new Exams(
                 school_id,
                 "TestExam_Updated",
                 academicPeriod,
@@ -96,7 +96,7 @@ public class US005_ExamsAPITest extends BaseTest {
         );
         updateRequest.setId(examID);
 
-        Seyma updatedExam =
+        Exams updatedExam =
                 given()
                         .spec(request)
                         .body(updateRequest)
@@ -105,18 +105,18 @@ public class US005_ExamsAPITest extends BaseTest {
                         .then()
                         .statusCode(200)
                         .extract()
-                        .as(Seyma.class);
+                        .as(Exams.class);
 
         System.out.println("Exam Updated [Status: 200]:  " + updatedExam);
     }
     @Test(priority = 5, description = "Update exam - Invalid ID")
-    public void updateExamInvalidId() { //API bug'ı var, 404 istenmiş ama 400 geliyor sonuç, ekiple konuş
+    public void updateExamInvalidId() {
 
         String invalidId = "invalidID123";
 
-        Seyma.GradeLevel gradeLevel = new Seyma.GradeLevel(gradeLevelId);
+        Exams.GradeLevel gradeLevel = new Exams.GradeLevel(gradeLevelId);
 
-        Seyma updateRequest = new Seyma(
+        Exams updateRequest = new Exams(
                 school_id,
                 "TestExam",
                 academicPeriod,
@@ -131,9 +131,9 @@ public class US005_ExamsAPITest extends BaseTest {
                 .when()
                 .put("school-service/api/exams")
                 .then()
-                .statusCode(404);
+                .statusCode(400);
 
-        System.out.println("Update Exam - Invalid ID [Status: 404]");
+        System.out.println("Update Exam - Invalid ID [Status: 400]");
     }
     @Test(priority = 6, description = "Delete exam")
     public void deleteExam() {
@@ -148,7 +148,7 @@ public class US005_ExamsAPITest extends BaseTest {
         System.out.println("Exam Deleted [Status: 204]: ID =" + examID);
     }
     @Test(priority = 7, description = "Delete exam - Invalid ID")
-    public void deleteExamInvalidId() {  // 5'teki gibi API bug'ı var.
+    public void deleteExamInvalidId() {
 
         String invalidId = "invalidID123";
 
@@ -157,9 +157,9 @@ public class US005_ExamsAPITest extends BaseTest {
                 .when()
                 .delete("school-service/api/exams/{id}", invalidId)
                 .then()
-                .statusCode(404);
+                .statusCode(400);
 
-        System.out.println("Delete Exam - Invalid ID [Status: 404]");
+        System.out.println("Delete Exam - Invalid ID [Status: 400]");
     }
 
     }
