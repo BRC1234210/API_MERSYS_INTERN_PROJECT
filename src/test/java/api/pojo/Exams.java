@@ -3,7 +3,7 @@ package api.pojo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Seyma {
+public class Exams {
     private String id;
     private String school;
     private String name;
@@ -11,10 +11,10 @@ public class Seyma {
     private GradeLevel gradeLevel;
     private String type;
 
-    public Seyma() {
+    public Exams() {
     }
 
-    public Seyma(String school, String name, String academicPeriod, GradeLevel gradeLevel, String type) {
+    public Exams(String school, String name, String academicPeriod, GradeLevel gradeLevel, String type) {
         this.school = school;
         this.name = name;
         this.academicPeriod = academicPeriod;
@@ -118,18 +118,6 @@ public class Seyma {
         private String type;
         private String hint;
         private String defaultValue;
-        private Boolean constant;
-        private Boolean systemField;
-        private Integer maxLength;
-        private Integer rows;
-        private Boolean multiple;
-        private String offLabel;
-        private String onLabel;
-        private String revisionId;
-        private String changedDate;
-        private String changedBy;
-        private String createdDate;
-        private String createdBy;
 
         public EntityField() {
         }
@@ -197,120 +185,6 @@ public class Seyma {
 
         public void setDefaultValue(String defaultValue) {
             this.defaultValue = defaultValue;
-        }
-
-        public Boolean getConstant() {
-            return constant;
-        }
-
-        public void setConstant(Boolean constant) {
-            this.constant = constant;
-        }
-
-        public Boolean getSystemField() {
-            return systemField;
-        }
-
-        public void setSystemField(Boolean systemField) {
-            this.systemField = systemField;
-        }
-
-        public Integer getMaxLength() {
-            return maxLength;
-        }
-
-        public void setMaxLength(Integer maxLength) {
-            this.maxLength = maxLength;
-        }
-
-        public Integer getRows() {
-            return rows;
-        }
-
-        public void setRows(Integer rows) {
-            this.rows = rows;
-        }
-
-        public Boolean getMultiple() {
-            return multiple;
-        }
-
-        public void setMultiple(Boolean multiple) {
-            this.multiple = multiple;
-        }
-
-        public String getOffLabel() {
-            return offLabel;
-        }
-
-        public void setOffLabel(String offLabel) {
-            this.offLabel = offLabel;
-        }
-
-        public String getOnLabel() {
-            return onLabel;
-        }
-
-        public void setOnLabel(String onLabel) {
-            this.onLabel = onLabel;
-        }
-
-        public String getRevisionId() {
-            return revisionId;
-        }
-
-        public void setRevisionId(String revisionId) {
-            this.revisionId = revisionId;
-        }
-
-        public String getChangedDate() {
-            return changedDate;
-        }
-
-        public void setChangedDate(String changedDate) {
-            this.changedDate = changedDate;
-        }
-
-        public String getChangedBy() {
-            return changedBy;
-        }
-
-        public void setChangedBy(String changedBy) {
-            this.changedBy = changedBy;
-        }
-
-        public String getCreatedDate() {
-            return createdDate;
-        }
-
-        public void setCreatedDate(String createdDate) {
-            this.createdDate = createdDate;
-        }
-
-        public String getCreatedBy() {
-            return createdBy;
-        }
-
-        public void setCreatedBy(String createdBy) {
-            this.createdBy = createdBy;
-        }
-
-        @Override
-        public String toString() {
-            return "EntityField{" +
-                    "id='" + id + '\'' +
-                    ", name='" + name + '\'' +
-                    ", code='" + code + '\'' +
-                    ", type='" + type + '\'' +
-                    ", hint='" + hint + '\'' +
-                    ", defaultValue='" + defaultValue + '\'' +
-                    ", constant=" + constant +
-                    ", systemField=" + systemField +
-                    ", maxLength=" + maxLength +
-                    ", rows=" + rows +
-                    ", multiple=" + multiple +
-                    ", createdDate='" + createdDate + '\'' +
-                    '}';
         }
     }
 }

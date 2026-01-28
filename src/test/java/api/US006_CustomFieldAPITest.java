@@ -1,6 +1,6 @@
 package api;
 
-import api.pojo.Seyma;
+import api.pojo.Exams;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -19,7 +19,7 @@ public class US006_CustomFieldAPITest extends BaseTest {
         String uniqueName = "US006_TestField_" + System.currentTimeMillis();
         String uniqueCode = "CF_US006_" + System.currentTimeMillis();
 
-        Seyma.EntityField requestField = new Seyma.EntityField(
+        Exams.EntityField requestField = new Exams.EntityField(
                 tenant_id,
                 uniqueName,
                 uniqueCode,
@@ -27,7 +27,7 @@ public class US006_CustomFieldAPITest extends BaseTest {
                 "Test Custom Field",
                 "TestValue"
         );
-        Seyma.EntityField createdField =
+        Exams.EntityField createdField =
                 given()
                         .spec(request)
                         .body(requestField)
@@ -39,7 +39,7 @@ public class US006_CustomFieldAPITest extends BaseTest {
                         .body("name", equalTo(uniqueName))
                         .body("code", equalTo(uniqueCode))
                         .extract()
-                        .as(Seyma.EntityField.class);
+                        .as(Exams.EntityField.class);
 
         fieldId = createdField.getId();
         System.out.println("Test 1: POST Create [Status: 201]");
@@ -47,7 +47,7 @@ public class US006_CustomFieldAPITest extends BaseTest {
 
     @Test(priority = 2, description = "POST - Create Custom Field (Duplicate Code)")
     public void createCustomFieldDuplicateCode() {
-        Seyma.EntityField requestField = new Seyma.EntityField(
+        Exams.EntityField requestField = new Exams.EntityField(
                 tenant_id,
                 "US006_TestField_Duplicate",
                 "CF_US006_001",
@@ -71,7 +71,7 @@ public class US006_CustomFieldAPITest extends BaseTest {
 
         String updatedName = "US006_TestField_" + System.currentTimeMillis() + "_Updated";
 
-        Seyma.EntityField updateRequest = new Seyma.EntityField(
+        Exams.EntityField updateRequest = new Exams.EntityField(
                 tenant_id,
                 updatedName,
                 "CF_US006_" + System.currentTimeMillis(),
@@ -81,7 +81,7 @@ public class US006_CustomFieldAPITest extends BaseTest {
         );
         updateRequest.setId(fieldId);
 
-        Seyma.EntityField updatedField =
+        Exams.EntityField updatedField =
                 given()
                         .spec(request)
                         .body(updateRequest)
@@ -94,14 +94,14 @@ public class US006_CustomFieldAPITest extends BaseTest {
                         .body("hint", equalTo("Updated Test Custom Field"))
                         .body("defaultValue", equalTo("UpdatedValue"))
                         .extract()
-                        .as(Seyma.EntityField.class);
+                        .as(Exams.EntityField.class);
 
         System.out.println("Test 3: PUT Update [Status: 200]");
     }
 
     @Test(priority = 4, description = "PUT - Update Custom Field (Duplicate Name with Different Code)")
     public void updateCustomFieldDuplicateName() {
-        Seyma.EntityField updateWithDuplicateName = new Seyma.EntityField(
+        Exams.EntityField updateWithDuplicateName = new Exams.EntityField(
                 tenant_id,
                 "US006_TestField_001_Updated",
                 "CF_US006_999",
@@ -147,8 +147,8 @@ public class US006_CustomFieldAPITest extends BaseTest {
 
         System.out.println("Test 6: DELETE Invalid ID [Status: 400]");
     }
-    @Test(priority = 8, description = "GET - List Custom Fields (Not Supported)")
-    public void getListNotSupported() {
+    @Test(priority = 7, description = "GET - List Custom Fields")
+    public void getListCustomFields() {
         given()
                 .spec(request)
                 .when()
@@ -156,10 +156,10 @@ public class US006_CustomFieldAPITest extends BaseTest {
                 .then()
                 .statusCode(200);
 
-        System.out.println("Test 8: GET List [Status: 200]");
+        System.out.println("Test 7: GET List [Status: 200]");
     }
-    @Test(priority = 9, description = "GET - Single Custom Field (Not Supported)")
-    public void getSingleNotSupported() {
+    @Test(priority = 8, description = "GET - Single Custom Field")
+    public void getSingleCustomField() {
         given()
                 .spec(request)
                 .when()
@@ -167,7 +167,7 @@ public class US006_CustomFieldAPITest extends BaseTest {
                 .then()
                 .statusCode(200);
 
-        System.out.println("Test 9: GET Single [Status: 200]");
+        System.out.println("Test 8: GET Single [Status: 200]");
 
     }
 }
