@@ -1,6 +1,6 @@
 package api;
 
-import api.pojo.Ahmet;
+import api.pojo.Login;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -17,10 +17,10 @@ public class US002_CreateCountryWithState extends BaseTest{
     @Severity(SeverityLevel.CRITICAL)
     public void createCountry() {
 
-        Ahmet requestCountry =
-                new Ahmet("Ahmetland","AL","true");
+        Login requestCountry =
+                new Login("Ahmetland","AL","true");
 
-        Ahmet createdCountry =
+        Login createdCountry =
                 given()
                         .spec(request)
                         .body(requestCountry)
@@ -31,7 +31,7 @@ public class US002_CreateCountryWithState extends BaseTest{
                         .then()
                         .statusCode(201)
                         .extract()
-                        .as(Ahmet.class);
+                        .as(Login.class);
 
         System.out.println("Country:"+createdCountry);
 

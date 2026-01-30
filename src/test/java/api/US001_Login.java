@@ -1,6 +1,6 @@
 package api;
 
-import api.pojo.Ahmet;
+import api.pojo.Login;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -20,10 +20,10 @@ public class US001_Login extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void createLogin() {
 
-        Ahmet requestLogin =
-                new Ahmet("TS_Staj", "TS_Staj2026");
+        Login requestLogin =
+                new Login("TS_Staj", "TS_Staj2026");
 
-        Ahmet createdLogin =
+        Login createdLogin =
                 given()
                         .spec(request)
                         .body(requestLogin)
@@ -35,7 +35,7 @@ public class US001_Login extends BaseTest {
                         .statusCode(200)
                         .body("access_token", notNullValue())
                         .extract()
-                        .as(Ahmet.class);
+                        .as(Login.class);
 
         accessToken = createdLogin.getAccess_token();
         System.out.println("Authorization Token:"+accessToken);
@@ -47,10 +47,10 @@ public class US001_Login extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void invalidLogin1() {
 
-        Ahmet requestLogin =
-                new Ahmet("TS_Staj", "wrongPassword");
+        Login requestLogin =
+                new Login("TS_Staj", "wrongPassword");
 
-        Ahmet createdLogin =
+        Login createdLogin =
                 given()
                         .spec(request)
                         .body(requestLogin)
@@ -61,7 +61,7 @@ public class US001_Login extends BaseTest {
                         .then()
                         .statusCode(401)
                         .extract()
-                        .as(Ahmet.class);
+                        .as(Login.class);
     }
     @Test(priority = 3, description = "Login the homepage with wrong username")
     @Story("Login as Authority")
@@ -69,10 +69,10 @@ public class US001_Login extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void invalidLogin2() {
 
-        Ahmet requestLogin =
-                new Ahmet("wrongUsername", "TS_Staj2026");
+        Login requestLogin =
+                new Login("wrongUsername", "TS_Staj2026");
 
-        Ahmet createdLogin =
+        Login createdLogin =
                 given()
                         .spec(request)
                         .body(requestLogin)
@@ -83,7 +83,7 @@ public class US001_Login extends BaseTest {
                         .then()
                         .statusCode(401)
                         .extract()
-                        .as(Ahmet.class);
+                        .as(Login.class);
     }
 
 }

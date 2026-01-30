@@ -3,7 +3,7 @@ package api.pojo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Ahmet {
+public class Login {
 
     private String username;
     private String password;
@@ -12,15 +12,15 @@ public class Ahmet {
     private String code;
     private String hasState;
 
-    public Ahmet() {
+    public Login() {
     }
 
-    public Ahmet(String username, String password) {
+    public Login(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public Ahmet(String name, String code, String hasState) {
+    public Login(String name, String code, String hasState) {
         this.name = name;
         this.code = code;
         this.hasState = hasState;

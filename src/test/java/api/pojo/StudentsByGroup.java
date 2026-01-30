@@ -1,6 +1,6 @@
 package api.pojo;
 
-public class baris {
+public class StudentsByGroup {
 
     private String id;
     private String schoolId;
@@ -11,17 +11,17 @@ public class baris {
     private boolean showToStudent;
 
     // ✅ No-Args Constructor (Jackson için şart)
-    public baris() {
+    public StudentsByGroup() {
     }
 
     // ✅ All-Args Constructor
-    public baris(String id,
-                 String schoolId,
-                 String name,
-                 String description,
-                 boolean active,
-                 boolean publicGroup,
-                 boolean showToStudent) {
+    public StudentsByGroup(String id,
+                           String schoolId,
+                           String name,
+                           String description,
+                           boolean active,
+                           boolean publicGroup,
+                           boolean showToStudent) {
         this.id = id;
         this.schoolId = schoolId;
         this.name = name;
