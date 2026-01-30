@@ -3,11 +3,9 @@ package api;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
-import java.time.format.ResolverStyle;
-
 import static io.restassured.RestAssured.given;
 
-public class US_008_AddStudentsByGroup extends BaseTest {
+public class US_008_009_AddStudentsByGroup extends BaseTest {
 
     private String groupId;
 
