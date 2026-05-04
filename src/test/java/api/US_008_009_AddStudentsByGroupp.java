@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class US_008_009_AddStudentsByGroup extends BaseTest {
+public class US_008_009_AddStudentsByGroupp extends BaseTest {
 
     private String groupId;
 
